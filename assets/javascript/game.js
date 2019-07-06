@@ -9,6 +9,10 @@ var rightWord = [];
 var wrongWord = [];
 
 var docUnderScore = document.getElementsByClassName('underScore');
+var docRightGuess = document.getElementsByClassName('rightGuess');
+var docWrongGuess = document.getElementsByClassName('wrongGuess');
+
+console.log(chooseWord);
 
 var generatedUnderscore = () => {
   for(let i = 0; i < chooseWord.length; i++) {
@@ -17,17 +21,16 @@ var generatedUnderscore = () => {
   return underScore;
 }
 
-console.log(generatedUnderscore());
-
 document.addEventListener('keypress', (event) => {
-var keyWord = String.fromCharCode(event.keyCode);
+  let keyWord = String.fromCharCode(event.keyCode);
 
-if(chooseWord.indexOf(keyWord) > -1) {
-  console.log(true);
+  if (chooseWord.indexOf(keyWord) > -1) {
 
   rightWord.push(keyWord);
 
   underScore[chooseWord.indexOf(keyWord)] * keyWord;
+  docUnderScore[0].innerHTML = underScore.join('');
+  docRightGuess[0].innerHTML = rightWord;
 
   if(underScore.join('') == chooseWord) {
     alert('You got it right!');
@@ -38,4 +41,3 @@ else {
 }
 });
 
-docUnderScore[0].innerHTML = generatedUnderscore().join(' ');
